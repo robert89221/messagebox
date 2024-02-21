@@ -5,9 +5,9 @@ namespace MessageBox.Models
   {
     public int Id { get; set; }
 
-    public string TopicName { get; set; }
+    public string? TopicName { get; set; }
     public bool AdminsOnly { get; set; }
 
-    public List<MessageModel> Messages { get; set; }
+    public List<MessageModel>? Messages { get; set; }
   }
 }
