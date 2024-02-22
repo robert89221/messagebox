@@ -9,6 +9,6 @@ namespace MessageBox.Models
     public string? Text { get; set; }
     public DateTime Date { get; set; }
 
-    public TopicModel? ParentTopic { get; set; }
+    public TopicModel ParentTopic { get; set; } = new TopicModel();
   }
 }

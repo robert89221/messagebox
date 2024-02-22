@@ -1,0 +1,40 @@
+﻿
+@model IEnumerable<MessageBox.Models.TopicModel>
+@using Microsoft.AspNetCore.Identity;
+@using Microsoft.AspNetCore;
+@using Microsoft.EntityFrameworkCore;
+@using MessageBox.Models;
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+@{  ViewData["Title"] = "Topics";  }
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var item in Model)
+    {
+      <tr>
+        <td>
+        <a asp-controller="ViewForum" asp-action="" asp-route-id="@item.Id">@item.TopicName</a>, @item.Messages.Count() posts
+      </td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+
+@*  fixa så enbart admin ser  *@
+@if (SignInManager.IsSignedIn(User))
+{
+  <p>
+    <a asp-action="Create">Create New</a>
+  </p>
+}
