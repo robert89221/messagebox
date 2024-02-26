@@ -11,7 +11,8 @@
 
 @{
   var IsSignedIn = SignInManager.IsSignedIn(User);
-  var IsAdmin = IsSignedIn && User.Identity.Name.Contains("admin");  
+  var IsAdmin = IsSignedIn && User.Identity.Name.Contains("admin");
+  var ctx = ViewBag.Context as ApplicationDbContext;
 }
 
 @if (IsSignedIn)
@@ -28,12 +29,12 @@
     </tr>
   </thead>
   <tbody>
-    @foreach (var item in Model.Messages)
+    @foreach (var item in Model.Messages.OrderByDescending(m => m.Date))
     {
       <tr>
         <td>
           <p>
-            @item.Title
+            <b>@item.Title</b>, posted at @item.Date by @item.Poster.UserName
           </p>
           <p>
             @item.Text

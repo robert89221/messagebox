@@ -35,7 +35,7 @@ namespace MessageBox.Controllers
         return NotFound();
       }
 
-      var topicModel = await _context.Topics.Include("Messages").FirstOrDefaultAsync(m => m.Id == id);
+      var topicModel = await _context.Topics.Include(t => t.Messages).ThenInclude(m => m.Poster).FirstOrDefaultAsync(m => m.Id == id);
       if (topicModel == null)
       {
         return NotFound();
