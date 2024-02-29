@@ -12,6 +12,6 @@ namespace MessageBox.Models
     public DateTime Date { get; set; }
     public IdentityUser? Poster { get; set; }
 
-    public TopicModel ParentTopic { get; set; } = new TopicModel();
+    public TopicModel? ParentTopic { get; set; }
   }
 }
