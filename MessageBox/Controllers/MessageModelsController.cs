@@ -55,16 +55,17 @@ namespace MessageBox.Controllers
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([FromForm] int ParentTopicId, [FromForm] string PosterId, [Bind("Id,Poster,ParentTopic,Title,Text")] MessageModel messageModel)
+    public async Task<IActionResult> Create([FromForm] int ParentTopicId, [FromForm] string PosterId, [Bind("Id,Title,Text")] MessageModel messageModel)
     {
       if (ModelState.IsValid)
       {
         messageModel.Date = DateTime.Now;
-        messageModel.Poster = _context.Users.FirstOrDefault(u => u.Id == PosterId);
-        messageModel.ParentTopic = _context.Topics.FirstOrDefault(t => t.Id == ParentTopicId);
+        messageModel.Poster = _context.Users.Find(PosterId);
+        messageModel.ParentTopic = _context.Topics.Find(ParentTopicId);
         _context.Add(messageModel);
         await _context.SaveChangesAsync();
-        return RedirectToAction(nameof(Index));
+
+        return Redirect($"~/ViewForum/Index/{ParentTopicId}");
       }
 
       return View(messageModel);

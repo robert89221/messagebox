@@ -31,10 +31,11 @@
         </div>
         <div class="form-group">
           <label value="Text" class="control-label">Message</label>
-          <input type="text" name="Text" class="form-control" />
+          <textarea rows="5" name="Text" class="form-control"></textarea>
           @* <span asp-validation-for="Text" class="text-danger"></span> *@
         </div>
         <div class="form-group">
+          <br/>
           <input type="submit" value="Create new post" class="btn btn-primary" />
         </div>
       </form>
@@ -61,10 +62,10 @@
       <tr>
         <td>
           <p>
-            <b>@item.Title</b>, posted at @item.Date by @item.Poster.UserName
+            <b>@item.Title</b> &nbsp posted at @item.Date by @item.Poster.UserName
           </p>
           <p>
-            @item.Text
+            @Html.Raw(item.Text.Replace("\r\n", "<br/>"))
           </p>
           @if (IsAdmin)
           {
