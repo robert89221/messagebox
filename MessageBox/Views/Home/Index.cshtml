@@ -1,14 +1,13 @@
 ﻿
 @using Microsoft.EntityFrameworkCore;
 
+
 @{
   ViewData["Title"] = "About MessageBox";
 }
 
 <div class="text-center">
-  <h1 class="display-5">Welcome to MessageBox</h1>
 
-  @* uppdatera med riktig data*@
   @{
     var ctx = ViewBag.Context as ApplicationDbContext;
 
@@ -16,13 +15,16 @@
     var MsgCount = 0;
 
     var query = ctx!.Topics.Include("Messages");
-    foreach (var topic in query)
-    {
-      MsgCount += topic.Messages.Count();
-    }
+    foreach (var topic in query)  MsgCount += topic.Messages.Count();
 
+    var Post = ctx!.Messages.OrderByDescending(m => m.Date).First();
   }
-  <p>3 users are currently online: Admin, user2, user3</p>
-  <p>There are @MsgCount messages in @TopicCount forums</p>
-  <p>Most recent post: <a href="./index.html">Selling a car</a> in <a href="./index.html">Cars</a></p>
+
+  <h1 class="display-5">Welcome to MessageBox</h1>
+  <br />
+  <p>
+    There are @MsgCount messages in @TopicCount topics<br />
+    <br />
+    Most recent post: <b>@Post.Title</b> in <a href="~/ViewForum/Index/@Post.ParentTopic.Id">@Post.ParentTopic.TopicName</a>
+  </p>
 </div>
