@@ -139,7 +139,7 @@ namespace MessageBox.Controllers
     // POST: ViewForum/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Delete(int id)
+    public async Task<IActionResult> Delete([FromForm] int ParentTopicId, int id)
     {
       var messageModel = await _context.Messages.FindAsync(id);
       if (messageModel != null)
@@ -148,7 +148,7 @@ namespace MessageBox.Controllers
       }
 
       await _context.SaveChangesAsync();
-      return RedirectToAction("Index", "AllForums");
+      return Redirect($"~/ViewForum/Index/{ParentTopicId}");
     }
 
     private bool TopicModelExists(int id)
