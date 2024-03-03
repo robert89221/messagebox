@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MessageBox.Data;
 using MessageBox.Models;
@@ -20,13 +16,14 @@ namespace MessageBox.Controllers
       _context = context;
     }
 
-    // GET: MessageModels
+/*    // GET: MessageModels
     public async Task<IActionResult> Index()
     {
       return View(await _context.Messages.ToListAsync());
     }
+*/
 
-    // GET: MessageModels/Details/5
+/*    // GET: MessageModels/Details/5
     public async Task<IActionResult> Details(int? id)
     {
       if (id == null)
@@ -42,12 +39,14 @@ namespace MessageBox.Controllers
 
       return View(messageModel);
     }
+*/
 
-    // GET: MessageModels/Create
+/*    // GET: MessageModels/Create
     public IActionResult Create()
     {
       return View();
     }
+*/
 
 
     // POST: MessageModels/Create
@@ -72,7 +71,7 @@ namespace MessageBox.Controllers
     }
 
 
-    // GET: MessageModels/Edit/5
+/*    // GET: MessageModels/Edit/5
     public async Task<IActionResult> Edit(int? id)
     {
       if (id == null)
@@ -87,8 +86,9 @@ namespace MessageBox.Controllers
       }
       return View(messageModel);
     }
+*/
 
-    // POST: MessageModels/Edit/5
+/*    // POST: MessageModels/Edit/5
     // To protect from overposting attacks, enable the specific properties you want to bind to.
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
@@ -122,8 +122,9 @@ namespace MessageBox.Controllers
       }
       return View(messageModel);
     }
+*/
 
-    // GET: MessageModels/Delete/5
+/*    // GET: MessageModels/Delete/5
     public async Task<IActionResult> Delete(int? id)
     {
       if (id == null)
@@ -140,8 +141,9 @@ namespace MessageBox.Controllers
 
       return View(messageModel);
     }
+*/
 
-    // POST: MessageModels/Delete/5
+/*    // POST: MessageModels/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
@@ -155,10 +157,12 @@ namespace MessageBox.Controllers
       await _context.SaveChangesAsync();
       return RedirectToAction(nameof(Index));
     }
+*/
 
-    private bool MessageModelExists(int id)
+/*    private bool MessageModelExists(int id)
     {
       return _context.Messages.Any(e => e.Id == id);
     }
+*/
   }
 }

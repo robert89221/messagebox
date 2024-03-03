@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MessageBox.Data;
 using MessageBox.Models;
+
 
 namespace MessageBox.Controllers
 {
@@ -27,7 +24,7 @@ namespace MessageBox.Controllers
     }
     */
 
-    // GET: ViewForum/1003
+    // GET: ViewForum/Index/1003
     public async Task<IActionResult> Index(int? id)
     {
       if (id == null)
@@ -44,13 +41,14 @@ namespace MessageBox.Controllers
       return View(topicModel);
     }
 
-    // GET: ViewForum/Create
+/*    // GET: ViewForum/Create
     public IActionResult Create()
     {
       return View();
     }
+*/
 
-    // POST: ViewForum/Create
+/*    // POST: ViewForum/Create
     // To protect from overposting attacks, enable the specific properties you want to bind to.
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
@@ -65,8 +63,9 @@ namespace MessageBox.Controllers
       }
       return View(topicModel);
     }
+*/
 
-    // GET: ViewForum/Edit/5
+/*    // GET: ViewForum/Edit/5
     public async Task<IActionResult> Edit(int? id)
     {
       if (id == null)
@@ -81,8 +80,9 @@ namespace MessageBox.Controllers
       }
       return View(topicModel);
     }
+*/
 
-    // POST: ViewForum/Edit/5
+/*    // POST: ViewForum/Edit/5
     // To protect from overposting attacks, enable the specific properties you want to bind to.
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
@@ -116,6 +116,7 @@ namespace MessageBox.Controllers
       }
       return View(topicModel);
     }
+*/
 
     /* GET: ViewForum/Delete/5
     public async Task<IActionResult> Delete(int? id)
@@ -151,9 +152,9 @@ namespace MessageBox.Controllers
       return Redirect($"~/ViewForum/Index/{ParentTopicId}");
     }
 
-    private bool TopicModelExists(int id)
+/*    private bool TopicModelExists(int id)
     {
       return _context.Topics.Any(e => e.Id == id);
     }
-  }
+*/  }
 }

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MessageBox.Data;
 using MessageBox.Models;
+
 
 namespace MessageBox.Controllers
 {
@@ -19,13 +16,15 @@ namespace MessageBox.Controllers
       _context = context;
     }
 
-    // GET: TopicModels
+
+/*    // GET: TopicModels
     public async Task<IActionResult> Index()
     {
       return View(await _context.Topics.ToListAsync());
     }
-
-    // GET: TopicModels/Details/5
+*/
+ 
+/*    // GET: TopicModels/Details/5
     public async Task<IActionResult> Details(int? id)
     {
       if (id == null)
@@ -42,12 +41,14 @@ namespace MessageBox.Controllers
 
       return View(topicModel);
     }
+*/
 
     // GET: TopicModels/Create
     public IActionResult Create()
     {
       return View();
     }
+
 
     // POST: TopicModels/Create
     // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -65,7 +66,8 @@ namespace MessageBox.Controllers
       return View(topicModel);
     }
 
-    // GET: TopicModels/Edit/5
+
+/*    // GET: TopicModels/Edit/5
     public async Task<IActionResult> Edit(int? id)
     {
       if (id == null)
@@ -80,8 +82,9 @@ namespace MessageBox.Controllers
       }
       return View(topicModel);
     }
+*/
 
-    // POST: TopicModels/Edit/5
+/*    // POST: TopicModels/Edit/5
     // To protect from overposting attacks, enable the specific properties you want to bind to.
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
@@ -115,8 +118,9 @@ namespace MessageBox.Controllers
       }
       return View(topicModel);
     }
+*/
 
-    // GET: TopicModels/Delete/5
+/*    // GET: TopicModels/Delete/5
     public async Task<IActionResult> Delete(int? id)
     {
       if (id == null)
@@ -133,8 +137,9 @@ namespace MessageBox.Controllers
 
       return View(topicModel);
     }
+*/
 
-    // POST: TopicModels/Delete/5
+/*    // POST: TopicModels/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
@@ -148,10 +153,11 @@ namespace MessageBox.Controllers
       await _context.SaveChangesAsync();
       return RedirectToAction(nameof(Index));
     }
+*/
 
-    private bool TopicModelExists(int id)
+/*    private bool TopicModelExists(int id)
     {
       return _context.Topics.Any(e => e.Id == id);
     }
-  }
+*/  }
 }
