@@ -4,27 +4,32 @@
 
 @{
   ViewData["Title"] = "About MessageBox";
+
+  var ctx = ViewBag.Context as ApplicationDbContext;
+
+  var TopicCount = ctx!.Topics.Count();
+  var MsgCount = ctx!.Messages.Count();
+
+  MessageModel? Post = null;
+  if (MsgCount > 0) Post = ctx!.Messages.Include(m => m.ParentTopic).OrderByDescending(m => m.Date).First();
 }
 
 <div class="text-center">
 
-  @{
-    var ctx = ViewBag.Context as ApplicationDbContext;
-
-    var TopicCount = ctx!.Topics.Count();
-    var MsgCount = 0;
-
-    var query = ctx!.Topics.Include("Messages");
-    foreach (var topic in query)  MsgCount += topic.Messages.Count();
-
-    var Post = ctx!.Messages.OrderByDescending(m => m.Date).First();
-  }
-
   <h1 class="display-5">Welcome to MessageBox</h1>
   <br />
-  <p>
-    There are @MsgCount messages in @TopicCount topics<br />
-    <br />
-    Most recent post: <b>@Post.Title</b> in <a href="~/ViewForum/Index/@Post.ParentTopic.Id">@Post.ParentTopic.TopicName</a>
-  </p>
+  @if (MsgCount > 0)
+  {
+    <p>
+      There are @MsgCount messages in @TopicCount topics<br />
+      <br />
+      Most recent post: <b>@Post.Title</b> in <a href="~/ViewForum/Index/@Post.ParentTopic.Id">@Post.ParentTopic.TopicName</a>
+    </p>
+
+  } else {
+    
+    <p>
+      There are @MsgCount messages in @TopicCount topics<br />
+    </p>
+  }
 </div>
