@@ -51,6 +51,11 @@
 
 
 <table class="table">
+  <style>
+    tr:nth-child(even) {
+      background-color:#eeeeee;
+    }
+  </style>
   <thead>
     <tr>
       <th></th>
@@ -75,13 +80,7 @@
               <input type="submit" value="Delete" class="btn btn-danger" />
             </form>
           }
-          @*
-        <td>
-        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
         </td>
-        *@
       </tr>
     }
   </tbody>
