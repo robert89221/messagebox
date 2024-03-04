@@ -5,17 +5,16 @@
 
 @{
   ViewData["Title"] = Model.TopicName;
+  //  Shortcut variables
+  var ctx = ViewBag.Context as ApplicationDbContext;
+  var IsSignedIn = SignInManager.IsSignedIn(User);
+  var IsAdmin = IsSignedIn && User.Identity.Name.Contains("admin");
 }
 
 <h1>@ViewData["Title"]</h1>
 
-@{
-  var IsSignedIn = SignInManager.IsSignedIn(User);
-  var IsAdmin = IsSignedIn && User.Identity.Name.Contains("admin");
-  var ctx = ViewBag.Context as ApplicationDbContext;
-}
 
-
+@*  The new post interface, for signed in users  *@
 @if (IsSignedIn)
 {
   <div class="row">
@@ -51,6 +50,7 @@
 
 
 <table class="table">
+  @*  Color alternating forum posts for visibility  *@
   <style>
     tr:nth-child(even) {
       background-color:#eeeeee;
@@ -70,8 +70,10 @@
             <b>@item.Title</b> &nbsp posted at @item.Date by @item.Poster.UserName
           </p>
           <p>
+            @*  Replace CR LN sequences with <br> for correct rendering  *@
             @Html.Raw(item.Text.Replace("\r\n", "<br/>"))
           </p>
+          @*  Render the delete button for admins  *@
           @if (IsAdmin)
           {
             <form asp-controller="ViewForum" method="post" asp-action="Delete">

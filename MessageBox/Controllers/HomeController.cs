@@ -1,4 +1,6 @@
 
+//  Controller for front page
+
 using MessageBox.Data;
 using MessageBox.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -19,16 +21,19 @@ namespace MessageBox.Controllers
       _context = context;
     }
 
+    //  Render welcome and stats view
     public IActionResult Index()
     {
       return View();
     }
 
+    //  Render view of topics
     public async Task<IActionResult> Forums()
     {
       return View(await _context.Topics.ToListAsync());
     }
 
+    //  Render privacy view
     public IActionResult Privacy()
     {
       return View();

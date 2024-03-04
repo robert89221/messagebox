@@ -8,6 +8,8 @@ namespace MessageBox.Models
     public string? TopicName { get; set; }
     public bool AdminsOnly { get; set; }
 
+    //  Related data
+
     public List<MessageModel> Messages { get; set; } = [];
   }
 }

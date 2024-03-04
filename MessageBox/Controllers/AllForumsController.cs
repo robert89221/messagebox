@@ -1,4 +1,6 @@
 ﻿
+//  Controller for topic view
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MessageBox.Data;
@@ -17,13 +19,15 @@ namespace MessageBox.Controllers
     }
 
     // GET: AllForums
+    // Render all topics
     public async Task<IActionResult> Index()
     {
-      return View(await _context.Topics.Include("Messages").ToListAsync());
+      return View(await _context.Topics.Include(t => t.Messages).ToListAsync());
     }
 
 
     // GET: AllForums/Create
+    // Render view for creating a new topic
     public IActionResult Create()
     {
       return View();
@@ -31,8 +35,7 @@ namespace MessageBox.Controllers
 
 
     // POST: AllForums/Create
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+    // Create new topic
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind("Id,TopicName,AdminsOnly")] TopicModel topicModel)
@@ -46,10 +49,5 @@ namespace MessageBox.Controllers
       return View(topicModel);
     }
 
-
-    private bool TopicModelExists(int id)
-    {
-      return _context.Topics.Any(e => e.Id == id);
-    }
   }
 }
