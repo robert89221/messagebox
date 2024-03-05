@@ -1,6 +1,6 @@
 # MessageBox
 
-MessageBox is a simple web app for discussion forums:
+MessageBox is a web app for simplified discussion forums:
 
 * Multiple topics
 * Simple thread-less view
@@ -10,3 +10,4 @@ MessageBox is a simple web app for discussion forums:
 
 * Refactor as a single controller with multiple views
 * Improve security by adding checks to controllers
+* Improve branding, styling and layout
